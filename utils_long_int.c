@@ -7,6 +7,8 @@
 
 #include "types_long_int.h"
 #include "constants_long_int.h"
+#include "bit_operation_long_int.h"
+#include "arithmetic_long_int.h"
 
 
 code_status_t init_long_int(long_int_t *value) {
@@ -60,4 +62,29 @@ sign_t get_sign(long_int_t src) {
     }
 
     return number_sign;
+}
+
+code_status_t negate_long_int(long_int_t *src) {
+    code_status_t ret_val;
+    if (src == NULL) {
+        ret_val = k_null_pointer;
+    } else {
+        ret_val = k_succes;
+        inverse_bit_long_int(src);
+        add_const(src, 1);
+    }
+    return ret_val;
+}
+
+code_status_t abs_long_int(long_int_t *src) {
+    code_status_t ret_val;
+    if (src == NULL) {
+        ret_val = k_null_pointer;
+    } else {
+        ret_val = k_succes;
+        if (get_sign(*src) == k_minus) {
+            negate_long_int(src);
+        }
+    }
+    return ret_val;
 }

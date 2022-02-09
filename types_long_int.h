@@ -12,7 +12,8 @@ typedef enum code_status {
     k_null_pointer = 1,
     k_overflow = 2,
     k_content_error = 3,
-    k_malloc_error = 4
+    k_malloc_error = 4,
+    k_divide_by_zero = 5,
 } code_status_t;
 
 typedef enum sign {

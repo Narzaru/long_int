@@ -19,7 +19,7 @@ code_status_t from_int_to_long_int(int src, long_int_t *dst) {
         init_long_int(dst);
 
         if (src < 0) {
-            inverse_bit(dst);
+            inverse_bit_long_int(dst);
         }
 
         int16_t test_value = 1;
