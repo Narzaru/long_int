@@ -9,8 +9,8 @@ int main() {
     long_int_t num2;
     long_int_t dst;
 
-    int int_num1 = INT32_MAX;
-    int int_num2 = INT32_MAX;
+    int int_num1 = 1234567;
+    int int_num2 = 17;
 
     init_long_int(&num1);
     init_long_int(&num2);
@@ -24,7 +24,7 @@ int main() {
     printf("[NUM2]\n");
     print_bin(num2, ' ', '\n');
 
-    div_long_int(num1, num2, &dst);
+    mod_long_int(num1, num2, &dst);
     printf("[dst = num1 %% num2]\n");
     print_bin(dst, ' ', '\n');
 
@@ -50,5 +50,8 @@ int main() {
     printf("[num1 >= num2 = ");
     is_greater_or_equal_long_int(num1, num2) == true ? printf("true]\n") : printf("false]\n");
 
+    printf("[TO STR]\n");
+    char str[8096];
+    printf("%s\n", from_long_int_to_str(num1, str));
     return 0;
 }
