@@ -6,7 +6,9 @@
 #include "types_long_int.h"
 #include "constants_long_int.h"
 
-code_status_t inverse_bit(long_int_t *num) {
+#include "utils_long_int.h"
+
+code_status_t inverse_bit_long_int(long_int_t *num) {
     code_status_t ret_val;
 
     if (num == NULL) {
@@ -15,6 +17,54 @@ code_status_t inverse_bit(long_int_t *num) {
         ret_val = k_succes;
         for (int i = 0; i < LONG_INT_BYTES_COUNT; ++i) {
             num->bytes[i] = ~(num->bytes[i]);
+        }
+    }
+    return ret_val;
+}
+
+code_status_t xor_long_int(long_int_t num1, long_int_t num2, long_int_t *dst) {
+    code_status_t ret_val;
+
+    if (dst == NULL) {
+        ret_val = k_null_pointer;
+    } else {
+        ret_val = k_succes;
+        init_long_int(dst);
+
+        for (ssize_t i = 0; i < LONG_INT_BYTES_COUNT; ++i) {
+            dst->bytes[i] = num1.bytes[i] ^ num2.bytes[i];
+        }
+    }
+    return ret_val;
+}
+
+code_status_t and_long_int(long_int_t num1, long_int_t num2, long_int_t *dst) {
+    code_status_t ret_val;
+
+    if (dst == NULL) {
+        ret_val = k_null_pointer;
+    } else {
+        ret_val = k_succes;
+        init_long_int(dst);
+
+        for (ssize_t i = 0; i < LONG_INT_BYTES_COUNT; ++i) {
+            dst->bytes[i] = num1.bytes[i] & num2.bytes[i];
+        }
+    }
+    return ret_val;
+}
+
+code_status_t orr_long_int(long_int_t num1, long_int_t num2, long_int_t *dst) {
+    code_status_t ret_val;
+
+    if (dst == NULL) {
+        ret_val = k_null_pointer;
+    } else {
+        ret_val = k_succes;
+        init_long_int(dst);
+
+        for (ssize_t i = 0; i < LONG_INT_BYTES_COUNT; ++i) {
+            dst->bytes[i] = num1.bytes[i] || num2.bytes[i];
         }
     }
     return ret_val;
